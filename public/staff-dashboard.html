@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIMS - Staff Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>ðŸŽ“ SIMS Staff Portal</h2>
+    </div>
+    <div class="sidebar-user">
+      <div class="user-avatar">S</div>
+      <div class="user-info">
+        <h4 id="staffName">staff1</h4>
+        <span>Computer Science</span>
+      </div>
+    </div>
+    
+    <div class="nav-section-title">Main</div>
+    <ul class="sidebar-nav">
+      <li><a href="staff-dashboard.html" class="active">ðŸ“Š Dashboard</a></li>
+    </ul>
+
+    <div class="nav-section-title">Students</div>
+    <ul class="sidebar-nav">
+      <li><a href="#" onclick="openModal('studentsModal')">ðŸ‘¥ Manage Students</a></li>
+      <li><a href="#" onclick="openModal('addStudentModal')">âž• Add Student</a></li>
+    </ul>
+
+    <div class="nav-section-title">Academics</div>
+    <ul class="sidebar-nav">
+      <li><a href="#" onclick="openModal('marksModal')">ðŸ“ Enter Marks</a></li>
+      <li><a href="#" onclick="openModal('attendanceModal')">ðŸ“… Mark Attendance</a></li>
+      <li><a href="#" onclick="openModal('subjectsModal')">ðŸ“š Manage Subjects</a></li>
+      <li><a href="index.html" style="color: #fc8181; margin-top: 30px;">ðŸšª Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-navbar">
+      <h3>Staff Dashboard</h3>
+      <div class="top-nav-right">
+        <span id="currentDate"></span>
+        <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+      </div>
+    </header>
+
+    <div class="dashboard-body">
+      <div class="welcome-banner">
+        <h2>Welcome back, staff1! ðŸ‘‹</h2>
+        <p>Here's what's happening at your institution today.</p>
+      </div>
+
+      <!-- Metric Cards (Matching Figure 5.2) -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #e2e8f0; color: #2b6cb0;">ðŸ‘¥</div>
+          <div class="metric-info">
+            <h4 id="statStudents">2</h4>
+            <span>Total Students</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #e6fffa; color: #319795;">ðŸ“š</div>
+          <div class="metric-info">
+            <h4 id="statSubjects">3</h4>
+            <span>Subjects</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #fffaf0; color: #dd6b20;">ðŸ§‘â€ðŸ«</div>
+          <div class="metric-info">
+            <h4 id="statStaff">1</h4>
+            <span>Staff Members</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #f7fafc; color: #718096;">ðŸ“…</div>
+          <div class="metric-info">
+            <h4>0</h4>
+            <span>Attendance Today</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions (Matching Figure 5.2) -->
+      <div class="section-panel">
+        <h4>âš¡ Quick Actions</h4>
+        <div class="actions-row">
+          <button class="btn-action" onclick="openModal('addStudentModal')">âž• Add Student</button>
+          <button class="btn-action secondary" onclick="openModal('marksModal')">ðŸ“ Enter Marks</button>
+          <button class="btn-action accent" onclick="openModal('attendanceModal')">ðŸ“… Mark Attendance</button>
+          <button class="btn-action" style="background:#4a5568;" onclick="openModal('subjectsModal')">ðŸ“š Manage Subjects</button>
+        </div>
+      </div>
+
+      <!-- Recent Students Table (Matching Figure 5.2) -->
+      <div class="section-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+          <h4>ðŸ“‹ Recent Students</h4>
+          <button class="btn-sm" onclick="openModal('studentsModal')">View All</button>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Semester</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="recentStudentsTable">
+              <tr>
+                <td><strong>STU002</strong></td>
+                <td>student 2</td>
+                <td>Electronics</td>
+                <td>-</td>
+                <td><button class="btn-sm" onclick="editStudent('STU002')">âœï¸ Edit</button></td>
+              </tr>
+              <tr>
+                <td><strong>STU001</strong></td>
+                <td>student 1</td>
+                <td>Electronics</td>
+                <td>-</td>
+                <td><button class="btn-sm" onclick="editStudent('STU001')">âœï¸ Edit</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+</script>
+</body>
+</html>

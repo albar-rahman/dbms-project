@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIMS - Student Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>ðŸŽ“ SIMS Student Portal</h2>
+    </div>
+    <div class="sidebar-user">
+      <div class="user-avatar" style="background:#27ae60;">A</div>
+      <div class="user-info">
+        <h4 id="studentDisplayName">student1</h4>
+        <span>STU001 - Student</span>
+      </div>
+    </div>
+    
+    <div class="nav-section-title">Main</div>
+    <ul class="sidebar-nav">
+      <li><a href="student-dashboard.html" class="active">ðŸ“Š Dashboard</a></li>
+    </ul>
+
+    <div class="nav-section-title">My Academics</div>
+    <ul class="sidebar-nav">
+      <li><a href="#marksSection">ðŸ“ My Marks & Grades</a></li>
+      <li><a href="#attendanceSection">ðŸ“… My Attendance</a></li>
+      <li><a href="#subjectsSection">ðŸ“š My Subjects</a></li>
+      <li><a href="#profileSection">ðŸ‘¤ My Profile</a></li>
+      <li><a href="index.html" style="color: #fc8181; margin-top: 30px;">ðŸšª Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-navbar">
+      <h3>Student Dashboard</h3>
+      <div class="top-nav-right">
+        <span id="currentDate"></span>
+        <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+      </div>
+    </header>
+
+    <div class="dashboard-body">
+      <div class="welcome-banner">
+        <h2>Welcome, student1! âš¡</h2>
+        <p>Electronics and Communication Engineering</p>
+      </div>
+
+      <!-- Metric Cards (Matching Figure 5.3) -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #ebf8ff; color: #3182ce;">ðŸ“š</div>
+          <div class="metric-info">
+            <h4>3</h4>
+            <span>Total Subjects</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #f0fff4; color: #38a169;">ðŸŽ“</div>
+          <div class="metric-info">
+            <h4>1</h4>
+            <span>Enrolled Semester</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #fffaf0; color: #dd6b20;">ðŸ“…</div>
+          <div class="metric-info">
+            <h4>100%</h4>
+            <span>Attendance</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" style="background: #faf5ff; color: #805ad5;">â­</div>
+          <div class="metric-info">
+            <h4>80%</h4>
+            <span>Average Score</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overall Attendance Progress Bar (Matching Figure 5.3) -->
+      <div class="section-panel" id="attendanceSection">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h4>ðŸ“Š Overall Attendance</h4>
+          <strong style="color: #27ae60;">100%</strong>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <!-- Quick Links (Matching Figure 5.3) -->
+      <div class="section-panel">
+        <h4>âš¡ Quick Links</h4>
+        <div class="actions-row">
+          <a href="#marksSection" class="btn-action">ðŸ“ View My Marks</a>
+          <a href="#attendanceSection" class="btn-action secondary">ðŸ“… View Attendance</a>
+          <a href="#subjectsSection" class="btn-action accent">ðŸ“š View Subjects</a>
+          <a href="#profileSection" class="btn-action" style="background:#4a5568;">ðŸ‘¤ My Profile</a>
+        </div>
+      </div>
+
+      <!-- Recent Marks Table (Matching Figure 5.3) -->
+      <div class="section-panel" id="marksSection">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+          <h4>ðŸ“ Recent Marks</h4>
+          <button class="btn-sm">View All</button>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Internal</th>
+                <th>External</th>
+                <th>Total</th>
+                <th>Grade</th>
+                <th>Semester</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CS103 - Database Management Systems</strong></td>
+                <td>30.00</td>
+                <td>50.00</td>
+                <td><strong>80.00</strong></td>
+                <td><span class="badge-grade">A</span></td>
+                <td>Sem 4</td>
+              </tr>
+              <tr>
+                <td><strong>CS101 - Introduction to Programming</strong></td>
+                <td>35.00</td>
+                <td>55.00</td>
+                <td><strong>90.00</strong></td>
+                <td><span class="badge-grade">A+</span></td>
+                <td>Sem 1</td>
+              </tr>
+              <tr>
+                <td><strong>MATH101 - Engineering Mathematics</strong></td>
+                <td>32.00</td>
+                <td>48.00</td>
+                <td><strong>80.00</strong></td>
+                <td><span class="badge-grade">A</span></td>
+                <td>Sem 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+</script>
+</body>
+</html>

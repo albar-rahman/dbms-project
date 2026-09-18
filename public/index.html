@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information Management System - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Blue Banner -->
+  <div class="login-header-banner">
+    <h1>Student Information Management System</h1>
+    <p>College Management Portal</p>
+  </div>
+
+  <!-- Login Card Container -->
+  <div class="login-card-container">
+    <div class="login-card">
+      <div class="login-tabs">
+        <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="authForm" onsubmit="handleAuth(event)">
+        <div class="form-group">
+          <label for="username">ðŸ‘¤ Username</label>
+          <input type="text" id="username" placeholder="Enter your username" required value="staff1">
+        </div>
+
+        <div class="form-group">
+          <label for="password">ðŸ”’ Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required value="password">
+        </div>
+
+        <div class="form-group" id="roleGroup" style="display: none;">
+          <label for="role">ðŸŽ“ Role</label>
+          <select id="role">
+            <option value="student">Student</option>
+            <option value="staff">Staff</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">Login to Portal</button>
+      </form>
+
+      <!-- Demo Credentials Box -->
+      <div class="demo-credentials-box">
+        <strong>Demo Credentials:</strong>
+        Staff: staff1 / password<br>
+        Student: student1 / password
+      </div>
+    </div>
+
+    <p class="footer-copy">Â© 2026 Student Information Management System. All rights reserved.</p>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
