@@ -128,8 +128,8 @@ The frontend replicates the design specifications documented in Chapter 5 of the
 +---------------------------------------------------------------------------------+
 |   [ Login ]   [ Register ]                                                      |
 |                                                                                 |
-|   ðŸ‘¤ Username: [ staff1          ]                                              |
-|   ðŸ”’ Password: [ â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢        ]                                              |
+|   👤 Username: [ staff1          ]                                              |
+|   🔒 Password: [ ••••••••        ]                                              |
 |                                                                                 |
 |   [               Login to Portal               ]                               |
 |                                                                                 |
@@ -247,12 +247,12 @@ WHERE s.student_id = 'STU001' AND m.semester = 4;
 
 ---
 
-## ðŸ“œ License
+## 📜 License
 
-Distributed under the **MIT License**. See [LICENSE](LICENSE) for more details.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more details.
 
 ---
 
 <p align="center">
-  Developed with ❤ by <a href="https://github.com/albar-rahman"><strong>Albar Rahman A</strong></a>
+  Developed with ❤️ by <a href="https://github.com/albar-rahman"><strong>Albar Rahman A</strong></a>
 </p>
