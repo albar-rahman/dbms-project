@@ -1,14 +1,13 @@
-<h1 align="center">🎓 Student Information Management System (SIMS)</h1>
+<h1 align="center">🎓 Student Information Management System</h1>
 
 <p align="center">
-  <strong>A comprehensive relational database management system designed to streamline institutional records, course enrollments, attendance tracking, and examination evaluation.</strong>
+  <strong>A comprehensive relational database management platform engineered with MySQL, Express.js, and an interactive institutional web portal for academic administration, mark evaluation, and attendance tracking.</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
-  <img src="https://img.shields.io/badge/Language-SQL-CC292B?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQL" />
-  <img src="https://img.shields.io/badge/Backend-Node.js_Express-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Frontend-HTML5_CSS3_JS-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/Database-MySQL%208.0+-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+  <img src="https://img.shields.io/badge/Backend-Node.js%20%7C%20Express-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Express" />
+  <img src="https://img.shields.io/badge/Frontend-HTML5%20%7C%20CSS3%20%7C%20JS-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="Web" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License: MIT" /></a>
 </p>
 
@@ -36,25 +35,26 @@ This project was engineered as part of the **Database Management System (EGB1221
 
 ---
 
-## 🗄 Entity-Relationship (ER) Architecture
+## 📐 Entity-Relationship (ER) Architecture
 
-The relational structure enforces referential integrity through foreign keys and cascading updates/deletions:
+The entity relationships mapped from the conceptual database design:
 
-``mermaid
+```mermaid
 erDiagram
-    USERS ||--o| STUDENTS : "authenticates as"
-    USERS ||--o| STAFF : "authenticates as"
-    STUDENTS ||--o{ MARKS : "evaluated in"
-    SUBJECTS ||--o{ MARKS : "assessed by"
-    STUDENTS ||--o{ ATTENDANCE : "logged for"
-    SUBJECTS ||--o{ ATTENDANCE : "conducted for"
+    USERS ||--o| STUDENTS : "identifies"
+    USERS ||--o| STAFF : "identifies"
+    STUDENTS ||--o{ MARKS : "awarded"
+    STUDENTS ||--o{ ATTENDANCE : "logged"
+    SUBJECTS ||--o{ MARKS : "evaluates"
+    SUBJECTS ||--o{ ATTENDANCE : "scheduled"
 
     USERS {
         int id PK
         string username UK
-        string password
+        string password_hash
         string role
-        timestamp created_at
+        string full_name
+        string email UK
     }
 
     STUDENTS {
@@ -108,20 +108,19 @@ erDiagram
         int id PK
         int student_id FK
         int subject_id FK
-        date date
+        date attendance_date
         string status
-        int marked_by
     }
-``
+```
 
 ---
 
-## 🖥 User Interface Overview
+## 🖥 Application Interface Preview
 
 The frontend replicates the design specifications documented in Chapter 5 of the project report:
 
 ### 1. Login Portal
-``
+```text
 +---------------------------------------------------------------------------------+
 |               STUDENT INFORMATION MANAGEMENT SYSTEM                             |
 |                     College Management Portal                                   |
@@ -137,7 +136,7 @@ The frontend replicates the design specifications documented in Chapter 5 of the
 |   Staff: staff1 / password                                                      |
 |   Student: student1 / password                                                  |
 +---------------------------------------------------------------------------------+
-``
+```
 
 ### 2. Staff Dashboard
 Includes high-level statistical counters, quick action triggers (+ Add Student, Enter Marks, Mark Attendance, Manage Subjects), and recent student roster.
@@ -149,49 +148,48 @@ Provides student metrics, overall attendance progress bar (100%), quick links, a
 
 ## 📁 Project Structure
 
-``
+```text
 dbms-project/
-â”‚
-â”œâ”€â”€ sql/
-â”‚   â”œâ”€â”€ schema.sql               # Relational DDL table definitions & foreign keys
-â”‚   â”œâ”€â”€ seed.sql                 # Sample records for staff, students, marks & attendance
-â”‚   â””â”€â”€ queries.sql              # Analytical queries (attendance %, GPA, departmental ranks)
-â”‚
-â”œâ”€â”€ public/
-â”‚   â”œâ”€â”€ index.html               # Login & Portal entry page (Figure 5.1)
-â”‚   â”œâ”€â”€ staff-dashboard.html     # Administrative management dashboard (Figure 5.2)
-â”‚   â”œâ”€â”€ student-dashboard.html   # Student academic portal (Figure 5.3)
-â”‚   â”œâ”€â”€ css/
-â”‚   â”‚   â””â”€â”€ style.css            # Responsive styles and dashboard components
-â”‚   â””â”€â”€ js/
-â”‚       â””â”€â”€ app.js               # Interactive frontend controller & state simulator
-â”‚
-â”œâ”€â”€ backend/
-â”‚   â”œâ”€â”€ server.js                # Express.js REST API server
-â”‚   â”œâ”€â”€ db.js                    # MySQL connection pool module
-â”‚   â””â”€â”€ package.json             # Backend dependencies
-â”‚
-â”œâ”€â”€ .gitignore                   # Version control ignore rules
-â”œâ”€â”€ LICENSE                      # MIT Open Source License
-â”œâ”€â”€ CODE_OF_CONDUCT.md           # Contributor Covenant Code of Conduct
-â”œâ”€â”€ CONTRIBUTING.md              # Open source contribution guidelines
-â”œâ”€â”€ README.md                    # Comprehensive repository documentation
-â””â”€â”€ SECURITY.md                  # Security reporting policy
-``
+├── sql/
+│   ├── schema.sql               # Relational DDL table definitions & foreign keys
+│   ├── seed.sql                 # Sample records for staff, students, marks & attendance
+│   └── queries.sql              # Analytical queries (attendance %, GPA, departmental ranks)
+│
+├── public/
+│   ├── index.html               # Login & Portal entry page (Figure 5.1)
+│   ├── staff-dashboard.html     # Administrative management dashboard (Figure 5.2)
+│   ├── student-dashboard.html   # Student academic portal (Figure 5.3)
+│   ├── css/
+│   │   └── style.css            # Responsive styles and dashboard components
+│   └── js/
+│       └── app.js               # Interactive frontend controller & state simulator
+│
+├── backend/
+│   ├── server.js                # Express.js REST API server
+│   ├── db.js                    # MySQL connection pool module
+│   └── package.json             # Backend dependencies
+│
+├── .gitignore                   # Version control ignore rules
+├── LICENSE                      # MIT Open Source License (Albar Rahman A)
+├── CODE_OF_CONDUCT.md           # Contributor Covenant Code of Conduct
+├── CONTRIBUTING.md              # Open source contribution guidelines
+├── README.md                    # Comprehensive repository documentation
+└── SECURITY.md                  # Security reporting policy
+```
 
 ---
 
 ## 🚀 Getting Started
 
 ### Option 1: Instant Browser Demo (No Server Required)
-Simply open public/index.html in any modern web browser:
-1. Double-click public/index.html or run:
-   ``cmd
+Simply open `public/index.html` in any modern web browser:
+1. Double-click `public/index.html` or run:
+   ```cmd
    start public\index.html
-   ``
+   ```
 2. Log in with the preloaded credentials:
-   - **Staff**: staff1 / password
-   - **Student**: student1 / password
+   - **Staff**: `staff1` / `password`
+   - **Student**: `student1` / `password`
 
 ---
 
@@ -199,25 +197,25 @@ Simply open public/index.html in any modern web browser:
 
 #### 1. Database Initialization
 Import the schema and seed data into your local MySQL server:
-``bash
+```bash
 mysql -u root -p < sql/schema.sql
 mysql -u root -p < sql/seed.sql
-``
+```
 
 #### 2. Backend Server Setup
-``bash
+```bash
 cd backend
 npm install
 npm start
-``
-The server will start at http://localhost:5000 with connected REST API endpoints.
+```
+The server will start at `http://localhost:5000` with connected REST API endpoints.
 
 ---
 
 ## 🗄 Key Analytical SQL Queries
 
 ### Calculate Student Attendance Percentage:
-``sql
+```sql
 SELECT 
     s.student_id,
     CONCAT(s.first_name, ' ', s.last_name) AS full_name,
@@ -227,10 +225,10 @@ SELECT
 FROM students s
 LEFT JOIN attendance a ON s.id = a.student_id
 GROUP BY s.id, s.student_id, s.first_name, s.last_name;
-``
+```
 
 ### Retrieve Semester Marksheet with Grades:
-``sql
+```sql
 SELECT 
     sub.subject_code,
     sub.subject_name,
@@ -243,7 +241,7 @@ FROM marks m
 JOIN subjects sub ON m.subject_id = sub.id
 JOIN students s ON m.student_id = s.id
 WHERE s.student_id = 'STU001' AND m.semester = 4;
-``
+```
 
 ---
 
